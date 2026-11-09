@@ -107,3 +107,7 @@ r3_guess = scale_backend(nk.backend(), {"cz": 0.5}, name="r3?")  # r2 の CZ 誤
 ```bash
 pytest
 ```
+
+`[chem]` を入れていない環境では、量子化学のテスト（`tests/test_chem.py`）は自動でスキップされます。
+
+動作確認した環境：Python 3.13、qiskit 2.4.2、qiskit-aer 0.17.2、qiskit-ibm-runtime 0.50.0、ffsim 0.0.86、pyscf 2.15.0、qiskit-addon-sqd 0.14.1
