@@ -27,8 +27,8 @@ def test_square_lattice_accepts_more_ab_pairs(n2_sto6g):
 def test_run_sqd_on_r2(n2_sto6g):
     prob, ham = n2_sto6g
     norb = prob["norb"]
-    r = run_sqd(prob, ham, nk.backend(), "square", [(p, p) for p in range(norb)],
-                shots=300, samples_per_batch=100, num_batches=2, max_iterations=3)
+    # ノートブック 8.2 節と同じ設定（ショットを減らすと誤差が数十 mHa まで広がる）
+    r = run_sqd(prob, ham, nk.backend(), "square", [(p, p) for p in range(norb)])
     assert 0.4 < r["valid_fraction"] <= 1.0
     assert r["energy"] >= ham["e_fci"] - 1e-6  # 変分原理
     assert r["error_mha"] < 50
